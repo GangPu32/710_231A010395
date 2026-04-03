@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1 - Danh sách Sản phẩm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html">← Menu</a>
+        <h2>Tìm Kiếm Sản Phẩm</h2>
+        <input type="text" id="searchInput" placeholder="Nhập tên sản phẩm để tìm..." style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box;">
+        
+        <div id="product-list" class="product-grid"></div>
+
+        <div style="margin-top: 30px; padding: 15px; background: #eee;">
+            <h3>Giải thích logic:</h3>
+            <p>- <strong>Tránh Injection:</strong> Khi render dữ liệu JS ra HTML, sử dụng phương thức <code>document.createElement()</code> và gán dữ liệu qua <code>textContent</code> thay vì <code>innerHTML</code>. Điều này đảm bảo mọi thẻ script do người dùng nhập vào ô tìm kiếm sẽ biến thành văn bản thuần tuý, chặn đứng lỗ hổng XSS (Cross-Site Scripting).</p>
+            <p>- <strong>Tối ưu tìm kiếm:</strong> Bắt sự kiện <code>input</code> để tìm kiếm realtime, dùng hàm <code>toLowerCase()</code> cho cả input và tên sản phẩm để so sánh không phân biệt hoa thường.</p>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

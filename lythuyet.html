@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phần 1: Lý thuyết</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html">← Menu</a>
+        <h2>Phần 1: Lý thuyết (40 điểm)</h2>
+        
+        <h3>Câu 1: Sự khác biệt giữa position: absolute và relative</h3>
+        <p><strong>- `position: relative`:</strong> Định vị phần tử tương đối so với vị trí bình thường của chính nó. Các phần tử khác xung quanh không bị ảnh hưởng (không bị lấp chỗ). <br>
+        <strong>- `position: absolute`:</strong> Định vị phần tử tuyệt đối so với phần tử cha gần nhất có thuộc tính position khác `static`. Nó bị rút khỏi luồng (flow) bình thường của tài liệu, các phần tử khác sẽ tràn lên chiếm chỗ của nó.</p>
+        <p><strong>- Ví dụ responsive:</strong> Đặt container ảnh là `relative`, icon "Sale" là `absolute` (top: 10px, right: 10px). Khi màn hình thu nhỏ, container co lại, icon vẫn luôn bám sát góc phải của ảnh thay vì bị trôi đi chỗ khác.</p>
+        <p><strong>- Ảnh hưởng deploy:</strong> Các thuộc tính này xử lý ở phía Client (Browser). Khi deploy lên hosting, nó không ảnh hưởng tới server mà quyết định việc website có hiển thị đúng và không bị vỡ layout trên đa thiết bị (mobile, tablet, PC) hay không.</p>
+
+        <h3>Câu 2: Quy trình đăng ký Domain và Cấu hình Hosting</h3>
+        <p><strong>- Quy trình:</strong> Mua tên miền (Domain) tại nhà cung cấp (GoDaddy, Namecheap) -> Đăng ký Hosting/Nền tảng deploy -> Trỏ NameServer (NS) hoặc bản ghi A/CNAME từ Domain về IP/Link của Hosting -> Đợi DNS cập nhật.</p>
+        <p><strong>- Vai trò DNS:</strong> Hệ thống phân giải tên miền (DNS) giống như danh bạ điện thoại, dịch tên miền dễ nhớ (vd: abc.com) thành địa chỉ IP của server chứa mã nguồn, giúp trình duyệt tìm được website.</p>
+        <p><strong>- 2 công cụ hỗ trợ:</strong> GitHub Pages, Netlify (hoặc Vercel).</p>
+        <p><strong>- Rủi ro bảo mật:</strong> Nếu cấu hình DNS sai, website có thể bị trỏ nhầm sang trang web giả mạo (DNS Hijacking) để lừa đảo người dùng. Nếu không dùng HTTPS (SSL), dữ liệu người dùng có thể bị đánh cắp.</p>
+
+        <h3>Câu 3: So sánh let, const, var trong JS</h3>
+        <p><strong>- Scope (Phạm vi):</strong> `var` có function scope (hoặc global). `let` và `const` có block scope (chỉ tồn tại trong cặp ngoặc nhọn `{}`). <br>
+        <strong>- Hoisting:</strong> Cả 3 đều bị hoisted. Nhưng `var` được khởi tạo giá trị là `undefined`, còn `let` và `const` nằm trong "Temporal Dead Zone" (vùng chết tạm thời), nếu gọi trước khi khai báo sẽ gây lỗi ReferenceError.</p>
+        <p><strong>- Ví dụ lỗi:</strong><br>
+        <code>for(var i=0; i&lt;3; i++) { setTimeout(() => console.log(i), 100); }</code> -> In ra 3, 3, 3 vì var không giữ được scope trong vòng lặp bất đồng bộ. Sửa bằng cách thay `var` bằng `let`.</p>
+        <p><strong>- Debug bằng Chrome DevTools:</strong> F12 mở DevTools -> Tab Sources -> Mở file JS -> Click vào số dòng để đặt Breakpoint. Tải lại trang, code sẽ dừng tại đó để ta kiểm tra giá trị của biến theo từng bước (Step over).</p>
+
+        <h3>Câu 4: Event Delegation</h3>
+        <p><strong>- Khái niệm:</strong> Thay vì gắn sự kiện (Event Listener) cho từng phần tử con, ta gắn một sự kiện duy nhất cho phần tử cha chứa chúng. Khi con bị click, sự kiện sẽ "nổi bọt" (Event Bubbling) lên cha để xử lý.</p>
+        <p><strong>- Ví dụ danh sách động:</strong> <br>
+        <code>document.getElementById('ul-list').addEventListener('click', e => { if(e.target.tagName === 'LI') console.log('Đã click', e.target.innerText); });</code></p>
+        <p><strong>- Lợi ích tối ưu hiệu suất:</strong> Tiết kiệm RAM vì chỉ tạo 1 Listener thay vì hàng trăm Listener cho mỗi `li`. Đồng thời, khi DOM thay đổi (thêm phần tử HTML mới bằng JS), ta không cần phải gắn lại sự kiện cho các phần tử mới này.</p>
+    </div>
+</body>
+</html>

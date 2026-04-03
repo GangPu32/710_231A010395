@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2 - Form Đăng Ký</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html">← Menu</a>
+        <h2>Form Đăng Ký</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label>Họ và tên:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="agree"> Tôi đồng ý với các điều khoản
+                </label>
+            </div>
+            <button type="submit" style="padding: 10px 20px; cursor: pointer;">Đăng Ký</button>
+            <div id="formMessage" style="margin-top: 15px;"></div>
+        </form>
+
+        <div style="margin-top: 30px; padding: 15px; background: #eee;">
+            <h3>Giải thích logic:</h3>
+            <p>- <strong>Xử lý sự kiện Submit:</strong> Dùng <code>e.preventDefault()</code> để chặn hành vi reload trang mặc định của Form. Sau đó dùng Regex để kiểm tra tính hợp lệ của mật khẩu (>=8 ký tự, chữ hoa, chữ thường, số).</p>
+            <p>- <strong>Bảo mật dữ liệu cục bộ:</strong> Chỉ lưu các thông tin an toàn (Tên, Email) vào <code>localStorage</code> để phục vụ hiển thị cá nhân hoá. TUYỆT ĐỐI không lưu mật khẩu vào LocalStorage (vì dữ liệu ở đây là plain-text, ai cũng xem được qua DevTools).</p>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

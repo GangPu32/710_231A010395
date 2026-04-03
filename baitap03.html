@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3 - Countdown Timer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html">← Menu</a>
+        <h2>Đồng hồ đếm ngược</h2>
+        <div id="timer">10:00</div>
+
+        <div style="margin-top: 30px; padding: 15px; background: #eee;">
+            <h3>Giải thích logic:</h3>
+            <p>- <strong>Tránh Memory Leak:</strong> Phải gán <code>setInterval</code> vào một biến (vd: <code>timerInterval</code>). Khi thời gian về 0 (hoặc nếu component bị huỷ trong các framework), bắt buộc phải gọi <code>clearInterval(timerInterval)</code> để giải phóng bộ nhớ, tránh việc hàm đếm vẫn chạy ngầm liên tục.</p>
+            <p>- <strong>Tích hợp Domain/Server:</strong> <code>setInterval</code> của Client phụ thuộc vào xung nhịp CPU và đồng hồ máy tính cá nhân, có thể bị sai lệch. Nếu làm web thực tế (ví dụ Flash Sale, Thi trắc nghiệm), khi tải trang ta phải fetch thời gian bắt đầu từ Server backend thay vì dùng đồng hồ Client, giúp đồng bộ thời gian tuyệt đối giữa mọi thiết bị.</p>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
